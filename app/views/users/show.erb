@@ -1,0 +1,14 @@
+<h1><%=@user.name%>'s Profile Page</h1><br>
+<label>Age:</label>
+<%=@user.age%><br>
+<label>Species:</label>
+<%=@user.species%><br>
+<label>Quote:</label>
+<%=@user.quote%><br>
+<label>Favorite Food:</label>
+<%=@user.fav_food%><br>
+<label>Sniffing Out:</label><br>
+<%@user.partners.each do |partner|%>
+<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%><br>
+<%end%>
+

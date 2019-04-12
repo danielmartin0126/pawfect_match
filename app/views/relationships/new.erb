@@ -1,0 +1,8 @@
+<h1>Create relationship</h1>
+<%=form_for @relationship do |f|%>
+<%=f.label "Animal 1"%>
+  <%= f.collection_select(:user_id, @users, :id, :name, prompt: true) %><br><br>
+<%=f.label "Animal 2"%>
+<%= f.collection_select(:so_user_id, @users, :id, :name, prompt: true) %><br><br>
+<%=f.submit%>
+<%end%>
