@@ -1,14 +1,23 @@
 <h1><%=@user.name%>'s Profile Page</h1><br>
+<img src="<%= @user.profile_pic%>"><br>
 <label>Age:</label>
 <%=@user.age%><br>
+<label>Gender:</label>
+<%=@user.gender%><br>
 <label>Species:</label>
 <%=@user.species%><br>
 <label>Quote:</label>
 <%=@user.quote%><br>
 <label>Favorite Food:</label>
 <%=@user.fav_food%><br>
+<label>Interests:</label>
+<%=@user.interests%><br>
 <label>Sniffing Out:</label><br>
 <%@user.partners.each do |partner|%>
 <%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%><br>
 <%end%>
+<%=link_to "Update #{@user.name}'s Profle", edit_user_path%><br>
+<%=link_to "Back to Users", users_path%>
+
+
 

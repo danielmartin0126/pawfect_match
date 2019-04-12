@@ -3,12 +3,18 @@
 <%=f.text_field :name%><br>
 <%=f.label "Age:"%>
 <%=f.number_field :age%><br>
+<%=f.label "Gender:"%>
+<%= f.select :gender, [true, false] %><br>
 <%=f.label "Species:"%>
 <%=f.text_field :species%><br>
 <%=f.label "Quote:"%>
 <%=f.text_area :quote%><br>
+<%=f.label "Interests:"%>
+<%=f.text_area :interests%><br>
 <%=f.label "Favorite Food:"%>
 <%=f.text_field :fav_food%><br>
+<%=f.label "Profile Picture:"%>
+<%=f.text_field :profile_pic%><br>
 <%=f.submit%>
 <%end%>
 
