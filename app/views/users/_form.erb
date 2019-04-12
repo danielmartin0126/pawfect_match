@@ -1,0 +1,14 @@
+<%=form_for @user do |f|%>
+<%=f.label "Name:"%>
+<%=f.text_field :name%><br>
+<%=f.label "Age:"%>
+<%=f.number_field :age%><br>
+<%=f.label "Species:"%>
+<%=f.text_field :species%><br>
+<%=f.label "Quote:"%>
+<%=f.text_area :quote%><br>
+<%=f.label "Favorite Food:"%>
+<%=f.text_field :fav_food%><br>
+<%=f.submit%>
+<%end%>
+
