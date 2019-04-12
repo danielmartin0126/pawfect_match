@@ -1,5 +1,8 @@
 class User < ApplicationRecord
     has_many :relationships
+    has_many :posts
+    has_many :comments
+    has_many :comments, through: :posts
 
 
     def partners
