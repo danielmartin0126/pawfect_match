@@ -1,0 +1,9 @@
+<h1>Post Page</h1><br>
+<img src="<%= @post.image_url%>"><br>
+<label>Caption:</label>
+<%=@post.caption%><br>
+<%=link_to "Update Post", edit_post_path%><br>
+<%=link_to "Back to Posts", posts_path%>
+
+
+
