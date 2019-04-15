@@ -1,0 +1,5 @@
+<h1> All Posts </h1>
+<%@posts.each do |post| %>
+<%= link_to image_tag(post.image_url), post_path(post)%><br>
+<p><%= link_to post.caption, post_path(post) %></p><br>
+<% end%>

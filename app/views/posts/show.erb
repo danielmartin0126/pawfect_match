@@ -1,0 +1,24 @@
+<h1>Post Page</h1><br>
+<img src="<%= @post.image_url%>"><br>
+<label>Caption:</label>
+<%=@post.caption%><br>
+<br>
+<h3>Comments</h3>
+<%@comments.each do |comment| %>
+<% if comment.post_id == @post.id%>
+<p><%=User.find(comment.commenter_id).name%>: </p>
+<p><%= comment.comment %></p><br>
+<%end%>
+<%end%>
+<%=link_to "Add comment", new_comment_path(:post => {:post_id => @post.id})%>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%=link_to "Update Post", edit_post_path%><br>
+<%=link_to "Back to #{@user.name}'s Profile'", user_path(@user)%>
+
+
+

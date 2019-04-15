@@ -4,7 +4,7 @@
 <%=f.label "Age:"%>
 <%=f.number_field :age%><br>
 <%=f.label "Gender:"%>
-<%= f.select :gender, [true, false] %><br>
+<%= f.select :gender, [["Female", true], ["Male", false]] %><br>
 <%=f.label "Species:"%>
 <%=f.text_field :species%><br>
 <%=f.label "Quote:"%>
