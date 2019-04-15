@@ -3,6 +3,16 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
+        # byebug
+    end
+
+    def search_users
+        if params[:search]
+            @users = User.search(params[:search])
+        else 
+            @users = User.all
+        end
+        render :index
     end
 
     def show
@@ -29,6 +39,10 @@ class UsersController < ApplicationController
     def destroy
         get_user.destroy
         redirect_to users_path
+    end
+
+    def filtered
+
     end
 
     private

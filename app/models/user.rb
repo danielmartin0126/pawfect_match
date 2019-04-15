@@ -19,4 +19,8 @@ class User < ApplicationRecord
         end
     end
 
+    def self.search(search)
+       where("species LIKE ?","%#{search}%" )
+    end
+
 end
