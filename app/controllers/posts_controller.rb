@@ -6,7 +6,9 @@ class PostsController < ApplicationController
     end
 
     def show
-    
+     @user = User.find(@post.animal_id)
+     @comments = Comment.all
+
     end 
 
     def new
