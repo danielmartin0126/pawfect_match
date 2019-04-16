@@ -1,0 +1,7 @@
+<h1> All Messages </h1>
+
+<%@messages.each do |message| %>
+<p><%= message.msg%></p>
+<p>From: <%=User.find(message.sender_id).name%></p>
+<p>To: <%=User.find(message.receiver_id).name%></p>
+<% end %>

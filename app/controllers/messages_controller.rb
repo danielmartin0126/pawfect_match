@@ -2,24 +2,21 @@ class MessagesController < ApplicationController
     before_action :get_message, only: [:show, :edit, :update]
 
     def index
-        @messages = message.all
+        @messages = Message.all
     end
 
     def show
-     @post = Post.find(@message.post_id)
+     @message = Message.find(message_params)
     end 
 
     def new
-        @message = message.new
+        @message = Message.new
         @users = User.all
-        @posts = Post.all
     end
 
     def create
-        @message = message.create(message_params)
-        @user = User.find(params[:message][:messageer_id])
-        @post = Post.find(params["message"]["post_id"])
-        redirect_to post_path(@post)
+        @message = Message.create(message_params)
+        redirect_to message_path(@message)
     end
 
     def edit
@@ -38,11 +35,11 @@ class MessagesController < ApplicationController
     private
 
     def get_message
-        @message = message.find(params[:id])
+        @message = Message.find(params[:id])
     end
 
     def message_params
-        params.require(:message).permit(:messageer_id, :post_id, :message)
+        params.require(:message).permit(:sender_id, :receiver_id, :msg)
     end
 
 

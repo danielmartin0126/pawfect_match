@@ -1,0 +1,9 @@
+<%=form_for @message do |f|%>
+<%=f.label "Message:"%>
+<%=f.text_area :msg%><br>
+<%=f.label "From:"%>
+<%= f.collection_select(:sender_id, @users, :id, :name, prompt: true) %><br>
+<%=f.label "To :"%>
+<%= f.collection_select(:receiver_id, @users, :id, :name, prompt: true) %><br>
+<%=f.submit%>
+<% end %>
