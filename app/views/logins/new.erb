@@ -1,0 +1,9 @@
+<h1> Create New Login</h1>
+
+<%=form_for @user do |f|%>
+<%=f.label "New Username:"%>
+<%=f.text_field :name%><br>
+<%=f.label "Password:" %>
+<%=f.password_field :password %>
+<%=f.submit "Create New Account" %>
+<% end %>

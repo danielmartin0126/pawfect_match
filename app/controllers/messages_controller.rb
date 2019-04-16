@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
     def show
      @message = Message.find(message_params)
-    end 
+    end
 
     def new
         @message = Message.new
@@ -16,17 +16,21 @@ class MessagesController < ApplicationController
 
     def create
         @message = Message.create(message_params)
+        if @message.valid?
         redirect_to message_path(@message)
+        else
+          flash[:errors] = @message.errors.full_messages
+          redirect_to new_supply_path
     end
 
     def edit
     end
 
-    def update 
+    def update
         @message.update(message_params)
         redirect_to message_path
     end
-    
+
     def destroy
         get_message.destroy
         redirect_to messages_path

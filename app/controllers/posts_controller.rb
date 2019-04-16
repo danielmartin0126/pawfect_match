@@ -9,7 +9,7 @@ class PostsController < ApplicationController
      @user = User.find(@post.animal_id)
      @comments = Comment.all
 
-    end 
+    end
 
     def new
         @post = Post.new
@@ -19,17 +19,21 @@ class PostsController < ApplicationController
     def create
         @post = Post.create(post_params)
         @user = User.find(params[:post][:animal_id])
-        redirect_to user_path(@user)
+        if @post.valid?
+          redirect_to user_path(@user)
+        else
+          flash[:errors] =@post.errors.full_messages
+          redirect_to new_supply_path
     end
 
     def edit
     end
 
-    def update 
+    def update
         @post.update(post_params)
         redirect_to post_path
     end
-    
+
     def destroy
         get_post.destroy
         redirect_to posts_path
