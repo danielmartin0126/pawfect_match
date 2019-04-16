@@ -2,32 +2,8 @@ class UsersController < ApplicationController
     before_action :get_user, only: [:show, :edit, :update]
 
     def index
-        # @users = User.all
         @users = User.search(params[:term])
-        # byebug
     end
-
-    # def search_users
-    #     if species[:search]
-    #         @users = User.where(species: User[:species][:search])
-    #     else
-    #         @users = User.all
-    #     end
-    #     render :ed
-    # end
-    #
-    # def user_search_results
-    #   @users = User.search(params[:search])
-    # end
-
-    # def search_results
-    # #   @search_result = params[:results]
-    # #   byebug
-    # #   # @users = User.all
-    # #   # @users.map do |user|
-    # #   #   @user = user.species
-    # #   # end
-    # end
 
     def results
     @all_species = User.species_list

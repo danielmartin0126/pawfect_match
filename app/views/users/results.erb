@@ -1,6 +1,0 @@
-<h1> All results </h1>
-
-<%=form_for @user do |f|%>
-<%= f.collection_select(:species, @all_species, @user.name, @user.species, prompt: true) %><br><br>
-<%=f.submit%>
-<%end%>

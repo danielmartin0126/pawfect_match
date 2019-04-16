@@ -1,7 +1,6 @@
 <h1> All Pets </h1>
 <h3>Find a Match By Species</h3>
     <%=form_tag(users_path, method: :get) do %>
-    <label>Species</label>
     <%=text_field_tag(:term, params[:term])%>
 
     <%=submit_tag "Search", name: nil %>

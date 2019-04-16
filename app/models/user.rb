@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
 
 
-
     def partners
         @partners = self.relationships.map do |relationship|
             User.find(relationship.so_user_id)
