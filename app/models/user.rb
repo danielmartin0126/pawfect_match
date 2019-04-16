@@ -10,7 +10,7 @@ class User < ApplicationRecord
     def partners
         @partners = self.relationships.map do |relationship|
             User.find(relationship.so_user_id)
-        end 
+        end
     end
 
     def m_f
@@ -25,11 +25,19 @@ class User < ApplicationRecord
         Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
     end
 
-    # def self.search(search)
-    #     if User.include?(search)
-    #         species = User.find_bu(species: search)
-    #    where("species = ?","%#{species.id}%" )
-    #     end
-    # end
+    def self.species_list
+      User.all.map do |user|
+        user.species
+      end
+    end
+
+    def self.search(term)
+        if User.species_list.include?(term)
+          species = User.find_by(species: term)
+          where('species = ?',  "#{term}")
+        else
+          all
+        end
+    end
 
 end
