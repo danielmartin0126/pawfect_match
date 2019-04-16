@@ -2,18 +2,18 @@ class UsersController < ApplicationController
     before_action :get_user, only: [:show, :edit, :update]
 
     def index
-        @users = User.all
+        @users = User.search(params[:search])
         # byebug
     end
 
-    def search_users
-        if params[:search]
-            @users = User.search(params[:search])
-        else 
-            @users = User.all
-        end
-        render :index
-    end
+    # def search_users
+    #     if params[:search]
+    #         @users = User.search(params[:search])
+    #     else 
+    #         @users = User.all
+    #     end
+    #     render :index
+    # end
 
     def show
         @users = User.all
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :species, :age, :quote, :fav_food, :gender, :profile_pic, :interests)
+        params.require(:user).permit(:name, :species, :age, :quote, :fav_food, :gender, :profile_pic, :interests, :search)
     end
 
 end
