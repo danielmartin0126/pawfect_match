@@ -20,7 +20,10 @@ class User < ApplicationRecord
     end
 
     def self.search(search)
-       where("species LIKE ?","%#{search}%" )
+        if User.include?(search)
+            species = User.find_bu(species: search)
+       where("species = ?","%#{species.id}%" )
+        end
     end
 
 end
