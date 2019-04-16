@@ -5,6 +5,8 @@ class User < ApplicationRecord
     has_many :comments, through: :posts
 
 
+
+
     def partners
         @partners = self.relationships.map do |relationship|
             User.find(relationship.so_user_id)
@@ -17,6 +19,10 @@ class User < ApplicationRecord
         else
             "Male"
         end
+    end
+
+    def messages
+        Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
     end
 
     # def self.search(search)
