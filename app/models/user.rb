@@ -19,11 +19,11 @@ class User < ApplicationRecord
         end
     end
 
-    def self.search(search)
-        if User.include?(search)
-            species = User.find_bu(species: search)
-       where("species = ?","%#{species.id}%" )
-        end
-    end
+    # def self.search(search)
+    #     if User.include?(search)
+    #         species = User.find_bu(species: search)
+    #    where("species = ?","%#{species.id}%" )
+    #     end
+    # end
 
 end
