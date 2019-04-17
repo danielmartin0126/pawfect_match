@@ -7,10 +7,10 @@ class UsersController < ApplicationController
         @pets = User.all
         @users = User.all
         # byebug
-        if params[:species]
-        @users = @users.select do |user|
-        user.species == params[:species]
-      end
+        if params[:species] && params[:gender]
+          @users = @users.select do |user|
+            user.species == params[:species] &&  user.gender == params[:gender]
+          end
         render :index
         end
     end

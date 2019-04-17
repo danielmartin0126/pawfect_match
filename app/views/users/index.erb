@@ -1,27 +1,28 @@
 <h1> All Pets </h1>
 <h3>Find a Match By:</h3>
-    <%=form_tag(users_path, method: :get) do %>
-    <label>Species:</label>
-    <%# <%=text_field_tag(:term, params[:term])%><br> %>
-    <%# <%= select_tag "users", options_from_collection_for_select(@users, "id", "species") %> %>
-    <%# <%=radio_button_tag 'gender', 'male' %> %>
-    <%=%><br>
-    <%# <%=submit_tag "Search", name: nil %> %>
-    <% end%>
+    <%# <%=form_tag(users_path, method: :get) do %>
+    <!-- <label>Species:</label> -->
+    <%# <%=text_field_tag(:term, params[:term])%>
+    <%# <%= select_tag "users", options_from_collection_for_select(@users, "id", "species") %>
+    <%# <%=radio_button_tag 'gender', 'male' %>
+
+    <%# <%=submit_tag "Search", name: nil %>
+
 
     <%=form_tag(users_path, method: :get) do %>
     <label>Species:</label>
     <%= select_tag "species", options_from_collection_for_select(@pets, "species", "species") %><br>
     <%= label_tag "Gender:" %>
     <%= label_tag "Female" %>
-    <%=radio_button_tag 'gender', 'female' %>
+    <%=radio_button_tag 'gender', 'Female' %>
     <%= label_tag "Male" %>
-    <%=radio_button_tag 'gender', 'male' %>
+    <%=radio_button_tag 'gender',  'Male' %><br>
     <%=submit_tag "Search", name: nil %>
-    <% end %>
+    <% end %><br> <br>
+    
 
 
-
+<%= link_to "View All", users_path %>
 
 
 
