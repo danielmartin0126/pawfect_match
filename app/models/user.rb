@@ -18,9 +18,13 @@ class User < ApplicationRecord
 
 
     def partners
-        @partners = self.relationships.map do |relationship|
-            User.find(relationship.so_user_id)
-        end
+      Relationship.where("user_id = ?", self.id).map do |relationship|
+        User.find(relationship.so_user_id)
+      end
+    end
+
+    def relationships
+        Relationship.where("user_id = ? OR so_user_id = ?", self.id, self.id)
     end
 
     def m_f

@@ -15,17 +15,28 @@ class RelationshipsController < ApplicationController
     end
 
     def create
-        @relationship = Relationship.create(relationship_params)
-        @user = User.find(params[:relationship][:user_id])
-        @user2 = User.find(params[:relationship][:so_user_id])
-        @relationship2 = Relationship.create(user_id: @user2.id, so_user_id: @user.id)
-        redirect_to user_path(@user)
+        @so_user = User.find(params[:user_id])
+        @user = User.find(session[:user_id])
+        @relationship = Relationship.new(user_id: @user.id, so_user_id: @so_user.id)
+        if @relationship.valid?
+            @relationship = Relationship.create(user_id: @user.id, so_user_id: @so_user.id)
+            @relationship2 = Relationship.create(user_id: @so_user.id, so_user_id: @user.id)
+            redirect_to user_path(@user)
+        else
+            flash[:errors] = @relationship.errors.full_messages
+            redirect_to user_path(@so_user)
+        end
     end
 
     def destroy
-        @user = User.find(params[:id])
-        get_relationship.destroy
-        redirect_to user_path(@user)
+        @user = User.find(params[:so_user_id])
+        current_user = session[:user_id]
+        @relationship1 = Relationship.find_by(user_id: current_user, so_user_id: @user.id)
+        @relationship2 = Relationship.find_by(user_id: @user.id, so_user_id: current_user)
+        @relationship1.destroy
+        @relationship2.destroy
+
+        redirect_to user_path(current_user)
     end
 
     private
@@ -37,5 +48,7 @@ class RelationshipsController < ApplicationController
     def relationship_params
         params.require(:relationship).permit(:user_id, :so_user_id)
     end
+
+
 
 end
