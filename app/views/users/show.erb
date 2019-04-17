@@ -1,3 +1,4 @@
+
 <h1><%=@user.name%>'s Profile Page</h1><br>
 <img src="<%= @user.profile_pic%>"><br>
 <label>Age:</label>
@@ -33,3 +34,6 @@
 <% end%>
 <br>
 
+<%= button_to "logout", logout_path, method: :delete %>
+
+<%= button_to "Delete this Account", user_path(@user), method: :delete, data: {confirm: "sure"} %>

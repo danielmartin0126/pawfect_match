@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   resources :relationships
   resources :posts
   resources :comments
-  resources :seekings
+  # resources :logins
   resources :messages
+
+
+  get "/login", to: "sessions#new", as: 'login'
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy", as: 'logout'
+
+
+
 end

@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_144057) do
+ActiveRecord::Schema.define(version: 2019_04_16_201758) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "post_id"
     t.integer "commenter_id"
     t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logins", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_144057) do
     t.boolean "gender"
     t.string "interests"
     t.string "profile_pic"
+    t.string "password_digest"
   end
 
 end

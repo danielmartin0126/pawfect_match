@@ -1,0 +1,18 @@
+<h1> Pawfect Match </h1>
+
+<!-- <h2> Please Login </h2> -->
+
+<h4><%= flash[:notice] %></h4>
+
+<%= form_tag(login_path) do%>
+<%= label_tag "Username:" %>
+<%= text_field_tag :name %><br>
+
+<%= label_tag "Password:" %>
+<%= password_field_tag :password %><br>
+
+<%= submit_tag 'Login' %>
+
+<% end %>
+
+<%= button_to "Create New User", new_user_path, method: :get%>

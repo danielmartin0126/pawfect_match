@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
     def show
      @post = Post.find(@comment.post_id)
-    end 
+    end
 
     def new
         @comment = Comment.new
@@ -19,17 +19,21 @@ class CommentsController < ApplicationController
         @comment = Comment.create(comment_params)
         @user = User.find(params[:comment][:commenter_id])
         @post = Post.find(params["comment"]["post_id"])
-        redirect_to post_path(@post)
+        if @comment.valid?
+          redirect_to post_path(@post)
+        else
+          flash[:errors] = @comment.errors.full_messages
+          redirect_to new_supply_path
     end
 
     def edit
     end
 
-    def update 
+    def update
         @comment.update(comment_params)
         redirect_to comment_path
     end
-    
+
     def destroy
         get_comment.destroy
         redirect_to comments_path

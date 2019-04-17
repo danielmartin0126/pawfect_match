@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authorized, only: [:new, :create]
     before_action :get_user, only: [:show, :edit, :update]
 
     def index
@@ -6,9 +7,8 @@ class UsersController < ApplicationController
     end
 
     def results
-    @all_species = User.species_list
-    @user = User.new
-
+      @all_species = User.species_list
+      @user = User.new
     end
 
     def show
@@ -21,7 +21,13 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-        redirect_to user_path(@user)
+        if @user.valid?
+            session[:user_id] = @user.id
+            redirect_to @user
+        else
+          flash[:errors] = @user.errors.full_messages
+          redirect_to new_user_path
+        end
     end
 
     def edit
@@ -34,12 +40,10 @@ class UsersController < ApplicationController
 
     def destroy
         get_user.destroy
+        flash[:notice] = "You have deleted your account"
         redirect_to users_path
     end
 
-    def filtered
-
-    end
 
     private
 
@@ -48,7 +52,8 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :species, :age, :quote, :fav_food, :gender, :profile_pic, :interests, :term)
+        params.require(:user).permit(:name, :species, :age, :quote, :fav_food, :gender, :profile_pic, :interests, :term, :password)
     end
+
 
 end
