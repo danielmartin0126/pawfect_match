@@ -3,8 +3,27 @@ class UsersController < ApplicationController
     before_action :get_user, only: [:show, :edit, :update]
 
     def index
-        @users = User.search(params[:term])
+        # @users = User.search(params[:term])
+        @pets = User.all
+        @users = User.all
+        # byebug
+        if params[:species] && params[:gender]
+          @users = @users.select do |user|
+            user.species == params[:species] &&  user.gender == params[:gender]
+          end
+        render :index
+        end
     end
+
+    # def search
+    #     @users = User.all
+    #     # byebug
+    #   @users = @users.select do |user|
+    #     user.species == params[:species]
+    #   end
+    #   render :index
+    # end
+
 
     def results
       @all_species = User.species_list
@@ -43,7 +62,6 @@ class UsersController < ApplicationController
         flash[:notice] = "You have deleted your account"
         redirect_to users_path
     end
-
 
     private
 

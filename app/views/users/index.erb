@@ -1,16 +1,35 @@
 <h1> All Pets </h1>
-<h3>Find a Match By Species</h3>
-    <%=form_tag(users_path, method: :get) do %>
-    <%=text_field_tag(:term, params[:term])%>
+<h3>Find a Match By:</h3>
+    <%# <%=form_tag(users_path, method: :get) do %>
+    <!-- <label>Species:</label> -->
+    <%# <%=text_field_tag(:term, params[:term])%>
+    <%# <%= select_tag "users", options_from_collection_for_select(@users, "id", "species") %>
+    <%# <%=radio_button_tag 'gender', 'male' %>
 
+    <%# <%=submit_tag "Search", name: nil %>
+
+
+    <%=form_tag(users_path, method: :get) do %>
+    <label>Species:</label>
+    <%= select_tag "species", options_from_collection_for_select(@pets, "species", "species") %><br>
+    <%= label_tag "Gender:" %>
+    <%= label_tag "Female" %>
+    <%=radio_button_tag 'gender', 'Female' %>
+    <%= label_tag "Male" %>
+    <%=radio_button_tag 'gender',  'Male' %><br>
     <%=submit_tag "Search", name: nil %>
-    <% end%>
-     <p></p>
+    <% end %><br> <br>
+    
+
+
+<%= link_to "View All", users_path %>
+
+
 
 
 <%@users.each do |user| %>
-<li>
-<%# <img src="<%= link_to user.profile_pic, user_path(user) %>
+<ul>
+<%= link_to image_tag(user.profile_pic), user_path(user) %><br>
 <%= link_to user.name, user_path(user) %>
-</li>
+</ul>
 <% end %>

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
-    
+
     has_many :relationships
     has_many :posts, foreign_key: :animal_id
     has_many :comments
@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :age, numericality: true
     validates :quote, presence: true
     validates :fav_food, presence: true
-    validates :gender, inclusion: {in: [true,false]}
+    validates :gender, presence: true
     validates :interests, presence: true
     validates :profile_pic, presence: true
 
