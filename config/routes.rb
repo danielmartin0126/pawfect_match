@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: 'logout'
 
 
+  # post "/search", to: "users#search", as: 'search'
+
 
 end

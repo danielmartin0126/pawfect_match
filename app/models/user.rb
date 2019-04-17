@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
-    
+
     has_many :relationships
     has_many :posts, foreign_key: :animal_id
     has_many :comments
