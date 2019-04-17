@@ -14,7 +14,7 @@
 <label>Interests:</label>
 <%=@user.interests%><br>
 <%if current_user != @user%>
-<%=button_to "Sniff Out"%>
+<%=button_to "Sniff Out", new_relationship_path,	method: :get%>
 <%end%>
 <label>Sniffing Out:</label><br>
 <%@user.partners.each do |partner|%>
@@ -37,8 +37,8 @@
 <% end%>
 <br>
 
-<%if current_user != @user%>
+<%if current_user == @user%>
 <%= button_to "Logout", logout_path, method: :delete %>
 
-<%= button_to "Delete this Account", user_path(@user), method: :delete, data: {confirm: "Do you wish to delete your account?} %>
+<%= button_to "Delete this Account", user_path(@user), method: :delete, data: {confirm: "Do you wish to delete your account?"} %>
 <%end%>
