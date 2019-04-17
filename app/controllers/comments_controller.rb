@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     end
 
     def create
+        
         @comment = Comment.create(comment_params)
         @user = User.find(params[:comment][:commenter_id])
         @post = Post.find(params["comment"]["post_id"])
@@ -23,16 +24,21 @@ class CommentsController < ApplicationController
     end
 
     def edit
+        @comment = Comment.find(params[:id])
+        @users = User.all
+        @posts = Post.all
+        @post = Post.find(Comment.find(params[:id]).post_id)
     end
 
     def update 
         @comment.update(comment_params)
-        redirect_to comment_path
+        @post = Post.find(Comment.find(params[:id]).post_id)
+        redirect_to post_path(@post)
     end
     
     def destroy
-        get_comment.destroy
-        redirect_to comments_path
+        Comment.find(params[:comment_id]).destroy
+        redirect_to post_path(params[:post_id])
     end
 
     private
