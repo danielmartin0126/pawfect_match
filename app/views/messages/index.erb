@@ -4,4 +4,5 @@
 <p><%= message.msg%></p>
 <p>From: <%=User.find(message.sender_id).name%></p>
 <p>To: <%=User.find(message.receiver_id).name%></p>
+<%= button_to "Edit", edit_message_path(:id => message.id), :action => "edit", :method => :get %>
 <% end %>

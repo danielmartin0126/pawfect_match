@@ -1,0 +1,8 @@
+<h1>Edit Comment</h1>
+<%=form_for @comment do |f|%>
+<%=f.label "Comment:"%>
+<%=f.text_area :comment%><br>
+<%=f.label "User Name:"%>
+<%= f.collection_select(:commenter_id, @users, :id, :name, prompt: true) %><br><br>
+<%=f.submit%>
+<% end %>

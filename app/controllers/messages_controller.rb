@@ -24,11 +24,13 @@ class MessagesController < ApplicationController
     end
 
     def edit
+        @users = User.all
+        get_message
     end
 
     def update
         @message.update(message_params)
-        redirect_to message_path
+        redirect_to messages_path
     end
 
     def destroy

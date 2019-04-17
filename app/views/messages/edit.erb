@@ -1,0 +1,8 @@
+<h1>Edit Message</h1>
+<%=form_for @message do |f|%>
+<%=f.label "Message:"%>
+<%=f.text_area :msg%><br>
+<%= f.collection_select(:sender_id, @users, :id, :name, prompt: true) %><br>
+<%= f.collection_select(:receiver_id, @users, :id, :name, prompt: true) %><br>
+<%=f.submit%>
+<% end %>
