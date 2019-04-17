@@ -21,6 +21,7 @@ class MessagesController < ApplicationController
         else
           flash[:errors] = @message.errors.full_messages
           redirect_to new_supply_path
+        end
     end
 
     def edit

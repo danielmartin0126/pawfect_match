@@ -1,5 +1,11 @@
 
 <h1><%=@user.name%>'s Profile Page</h1><br>
+
+<%if flash[:errors]%>
+  <% flash[:errors].each do |error| %>
+    <p style="color:red;"> <%= error  %></p>
+  <% end %>
+<% end %>
 <img src="<%= @user.profile_pic%>"><br>
 <label>Age:</label>
 <%=@user.age%><br>
@@ -14,11 +20,16 @@
 <label>Interests:</label>
 <%=@user.interests%><br>
 <%if current_user != @user%>
-<%=button_to "Sniff Out", new_relationship_path,	method: :get%>
+<%=button_to "Sniff Out", {:controller => "relationships", :action => "create", :user_id => @user.id,} , :method=>:post %>
 <%end%>
+
 <label>Sniffing Out:</label><br>
 <%@user.partners.each do |partner|%>
-<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%><br>
+<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%>
+<%if current_user == @user%>
+<td><%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td>
+<%end%>
+<br>
 <%end%>
 <%=link_to "Send #{@user.name} a message", new_message_path%><br>
 <%=link_to "Update #{@user.name}'s Profle", edit_user_path%><br>
