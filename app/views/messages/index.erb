@@ -1,8 +1,14 @@
 <h1> All Messages </h1>
+<% if @messages.length == 0 %>
+    <p>No messages available</p>
+<%end%>
+
 
 <%@messages.each do |message| %>
 <p><%= message.msg%></p>
 <p>From: <%=User.find(message.sender_id).name%></p>
 <p>To: <%=User.find(message.receiver_id).name%></p>
-<%= button_to "Edit", edit_message_path(:id => message.id), :action => "edit", :method => :get %>
+<%= button_to "Reply", edit_message_path(:id => message.id), :action => "edit", :method => :get %>
+<%=link_to "Reply", new_message_path(:id => message.id), :action => "edit", :method => :get %>
+
 <% end %>
