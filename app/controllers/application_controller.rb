@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
-  before_action :authorized
+  before_action :authorized, except: [:home]
   helper_method :current_user
+
+    def home
+    end
+
 
     def m_f
         if :gender == true

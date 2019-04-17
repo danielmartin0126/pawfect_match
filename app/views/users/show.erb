@@ -13,6 +13,9 @@
 <%=@user.fav_food%><br>
 <label>Interests:</label>
 <%=@user.interests%><br>
+<%if current_user != @user%>
+<%=button_to "Sniff Out"%>
+<%end%>
 <label>Sniffing Out:</label><br>
 <%@user.partners.each do |partner|%>
 <%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%><br>
@@ -34,6 +37,8 @@
 <% end%>
 <br>
 
-<%= button_to "logout", logout_path, method: :delete %>
+<%if current_user != @user%>
+<%= button_to "Logout", logout_path, method: :delete %>
 
-<%= button_to "Delete this Account", user_path(@user), method: :delete, data: {confirm: "sure"} %>
+<%= button_to "Delete this Account", user_path(@user), method: :delete, data: {confirm: "Do you wish to delete your account?} %>
+<%end%>

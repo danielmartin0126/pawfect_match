@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :age, numericality: true
     validates :quote, presence: true
     validates :fav_food, presence: true
-    validates :gender, presence: true
+    validates :gender, inclusion: {in: [true,false]}
     validates :interests, presence: true
     validates :profile_pic, presence: true
 
