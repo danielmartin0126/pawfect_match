@@ -57,9 +57,20 @@
    margin-bottom: 5rem;
    margin-left: 5rem;
    margin-right: 5rem;
-   color: red;
+   color: orange;
+   font-weight: bold;
 }
 
+.text-link{
+  font-family: 'Underdog', cursive;
+  color: orange;
+  font-weight: bold;
+}
+.text-link{
+  font-family: 'Underdog', cursive;
+  color: pink;
+  font-weight: bold;
+}
 .button {
   text-align: center;
   color: white ;
@@ -75,7 +86,7 @@
   margin-bottom: 5rem;
   margin-left: 5rem;
   margin-right: 5rem;
-  color: red;
+  color: white;
 }
 .profile {
   text-align: right;
@@ -129,6 +140,18 @@
 
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
+  border: solid;
+  border-color: yellow;
+}
+.row{
+  align-content: flex-start;
+  border: solid;
+  border-color: red;
+}
+
+.col {
+  border: solid;
+  border-color: green;
 }
 
 .flex-item {
@@ -141,6 +164,9 @@
   font-weight: bold;
   font-size: 3em;
   text-align: center;
+  object-fit: scale-down;
+  border: solid;
+  border-color: red;
 }
 
 .logo {
@@ -152,4 +178,13 @@
   // max-width: 10%;
   // border: solid;
   // border-color: red;
+}
+
+#sniffing-out{
+  display: inline-block;
+  text-align: center;
+  width: 125px;
+  height: 125px;
+  border-radius: 100%;
+  object-fit: cover;
 }

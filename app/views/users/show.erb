@@ -5,39 +5,46 @@
     <p style="color:red;"> <%= error  %></p>
   <% end %>
 <% end %>
-<%= image_tag @user.profile_pic, class: "img-fluid" %>
 
-<h1><%=@user.name%></h1><br>
+  <div class="row">
+   <div class="col-3">
+    <%= image_tag @user.profile_pic, class: "img-fluid" %><br>
+
+    <h1><%=@user.name%></h1><br>
+    </div>
+  <div class="col">
+    <label>Age:</label>
+    <%=@user.age%><br>
+    <label>Gender:</label>
+    <%=@user.gender%><br>
+    <label>Species:</label>
+    <%=@user.species%><br>
+    <label>Quote:</label>
+    <%=@user.quote%><br>
+    <label>Favorite Food:</label>
+    <%=@user.fav_food%><br>
+    <label>Interests:</label>
+    <%=@user.interests%><br>
+    </div>
+  </div>
 
 
-<%# <img src="<%= @user.profile_pic%>
-<br><br>
-
-<label>Age:</label>
-<%=@user.age%><br>
-<label>Gender:</label>
-<%=@user.gender%><br>
-<label>Species:</label>
-<%=@user.species%><br>
-<label>Quote:</label>
-<%=@user.quote%><br>
-<label>Favorite Food:</label>
-<%=@user.fav_food%><br>
-<label>Interests:</label>
-<%=@user.interests%><br>
 <%if current_user == @user%>
-<%=link_to "Update #{@user.name}'s Profle", edit_user_path%><br>
+<div>
+<a class="text-link" href="/users/<%=session[:user_id]%>/edit">Update <%= @user.name%>'s Profle</a><br>
 <% end %>
+</div>
+
 
 <%if current_user != @user%>
 <%=button_to "Sniff Out", {:controller => "relationships", :action => "create", :user_id => @user.id,} , :method=>:post %>
 <%end%>
 
 <%if current_user == @user%>
-<label>Sniffing Out:</label><br>
+<label class="text">Sniffing Out:</label><br>
 <%@user.partners.each do |partner|%>
-<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%>
-<td><%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td>
+<a href="/users/<%=partner.id%>" class="text-link"><img id="sniffing-out" src="<%=partner.profile_pic%>">   <%= partner.name%></a>-<%=partner.age%>-<%=partner.species%> <br> <br>
+<td> <%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td><br>
 <%end%>
 <br>
 <%end%>
@@ -63,6 +70,7 @@
 
 <br>
 <div class="flex-container">
+
   <%@user.posts.each do |post| %>
     <div class="card">
       <div class="card-body">
@@ -73,6 +81,7 @@
         </div>
         <h5><%= link_to post.caption, post_path(post) %></h5>
       </div>
+
 </div>
     <% end %>
 </div>

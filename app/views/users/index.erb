@@ -15,14 +15,12 @@
   </div>
 
 
-<div>
-<%= link_to "View All", users_path %>
+<div  class="center-text">
+<a href="/users" class="all">View All</a>
 </div>
 
-<%# <%= link_to image_tag(user.profile_pic), user_path(user) %>
-<%# <%= link_to user.name, user_path(user) %>
-
 <div class="flex-container">
+
   <%@users.each do |user| %>
   <%# <div class="flex-item"> %>
     <div class="card">
@@ -34,6 +32,7 @@
         </div>
         <h5><%= link_to user.name, user_path(user) %></h5>
       </div>
+
 </div>
     <% end %>
 </div>
