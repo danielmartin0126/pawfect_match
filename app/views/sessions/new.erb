@@ -3,7 +3,7 @@
 
 <!-- <h2> Please Login </h2> -->
 
-<h4><%= flash[:notice] %></h4>
+<h4 class="error"><%= flash[:notice] %></h4>
 
 <%= form_tag(login_path) do%>
   <%= label_tag "Username:" %>

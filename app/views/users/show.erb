@@ -10,9 +10,9 @@
    <div class="col-3">
     <%= image_tag @user.profile_pic, class: "img-fluid" %><br>
 
-    <h1><%=@user.name%></h1><br>
+    <h1 class="text-label"><%=@user.name%></h1><br>
     </div>
-  <div class="col">
+  <div class="col text">
     <label>Age:</label>
     <%=@user.age%><br>
     <label>Gender:</label>
@@ -28,6 +28,13 @@
     </div>
   </div>
 
+<br>
+
+<div class="text">
+<%if current_user != @user%>
+<%= link_to "Message #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, :method => :get%>
+<%end%>
+</div>
 
 <%if current_user == @user%>
 <div>
@@ -37,61 +44,71 @@
 
 
 <%if current_user != @user%>
+<div class="text all">
 <%=button_to "Sniff Out", {:controller => "relationships", :action => "create", :user_id => @user.id,} , :method=>:post %>
 <%end%>
-
-<%if current_user == @user%>
-<label class="text">Sniffing Out:</label><br>
-<%@user.partners.each do |partner|%>
-<a href="/users/<%=partner.id%>" class="text-link"><img id="sniffing-out" src="<%=partner.profile_pic%>">   <%= partner.name%></a>-<%=partner.age%>-<%=partner.species%> <br> <br>
-<td> <%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td><br>
-<%end%>
-<br>
-<%end%>
-<%if current_user != @user%>
-<%= link_to "Message #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, :method => :get%>
-<%end%>
-
-
-<br>
-<%=button_to "Update #{@user.name}'s Profile", edit_user_path, method: :get%><br>
-<%=button_to "Back to Users", users_path, method: :get%>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<% if current_user == @user %>
-<%= button_to "Add new post", new_post_path, method: :get%>
- <%end %>
-<br>
-
-<br>
-<div class="flex-container">
-
-  <%@user.posts.each do |post| %>
-    <div class="card">
-      <div class="card-body">
-        <div class='img-container'>
-        <a href="<%=post_path(post)%>" >
-          <img src=<%=post.image_url%> class="img-fluid">
-          </a>
-        </div>
-        <h5><%= link_to post.caption, post_path(post) %></h5>
-      </div>
-
-</div>
-    <% end %>
 </div>
 
-
-
-
-
 <%if current_user == @user%>
-<%= button_to "Logout", logout_path, method: :delete %>
+<div class="row all">
+  <div class="col-4 text">
+  <label class="text-label all">Sniffing Out:</label><br>
+  <%@user.partners.each do |partner|%>
+  <a href="/users/<%=partner.id%>" class="text-link"><img id="sniffing-out" src="<%=partner.profile_pic%>"><br>&nbsp&nbsp<%= partner.name%></a><br>&nbsp&nbsp<a class="text-desc"><%=partner.species%></a> <br>
+  <td> <%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td><br>
+  <%end%>
+  <br>
+  <%end%>
+  </div>
 
+  <div class="col">
+      <div class="row">
+            <% if current_user == @user %>
+              <div class="col-3">
+                <br><%= button_to "Add new post", new_post_path, method: :get%>
+              </div>
+              <div class="col">
+                <h1 class="text-label"><%=@user.name%>'s Post's</h1>
+              </div>
+             <%end %><br>
+             <% if current_user != @user %>
+                <div class="col-3">
+                </div>
+                <div  class="text-label center-text col-6"
+                <h1><%=@user.name%>'s Post's</h1>
+                </div>
+             <% end %>
+       </div>
+       <div class="flex-container">
+      <%@user.posts.each do |post| %>
+        <div class="card">
+          <div class="card-body">
+            <div class='img-container'>
+            <a href="<%=post_path(post)%>" >
+              <img src=<%=post.image_url%> class="img-fluid">
+              </a>
+            </div>
+            <h5 class="text-desc"><%= link_to post.caption, post_path(post) %></h5>
+          </div>
+    </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="all">
+<%if current_user == @user%>
 <%= button_to "Delete this Account", user_path(@user), method: :delete, data: {confirm: "Do you wish to delete your account?"} %>
 <%end%>
+</div>
