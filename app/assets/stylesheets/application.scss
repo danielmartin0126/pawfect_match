@@ -39,12 +39,18 @@
   width: 20%;
   padding: 10px;
 }
-  
+
+.jumbotron {
+  height: 10%;
+}
+
 #message_top {
     text-align: center;
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+}
+
 .all {
   font-family: 'Underdog', cursive;
    margin-top: 5rem;
@@ -73,9 +79,12 @@
 }
 .profile {
   text-align: right;
-  margin-right: 5rem;
-  margin-top: 5rem;
+  margin-right: 1rem;
+  margin-top: .05rem;
   color: red;
+  // max-width: 10%;
+  // border: solid;
+  // border-color: red;
 }
 
 .body{
@@ -122,4 +131,15 @@
   font-weight: bold;
   font-size: 3em;
   text-align: center;
+}
+
+.logo {
+  text-align: center;
+  margin-right: 5rem;
+  margin-left: 5rem;
+  margin-top: .05rem;
+  color: red;
+  // max-width: 10%;
+  // border: solid;
+  // border-color: red;
 }
