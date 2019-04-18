@@ -15,19 +15,16 @@
   </div>
 
 
-<div>
-<%= link_to "View All", users_path %>
+<div  class="center-text">
+<a href="/users" class="all">View All</a>
 </div>
-
-<%# <%= link_to image_tag(user.profile_pic), user_path(user) %>
-<%# <%= link_to user.name, user_path(user) %>
 
 <div class="flex-container">
 <%@users.each do |user| %>
 <div class="flex-item">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <img src=<%=user.profile_pic%> class="img-fluid">
+    <a href="/users/<%=user.id%>">  <img src=<%=user.profile_pic%> class="img-fluid"></a>
     <h5><%= link_to user.name, user_path(user) %></h5>
   </div>
   </div>
