@@ -93,18 +93,27 @@
   background-size: cover;
 }
 
+
+.img-container {
+    max-height: 10em;
+    overflow: hidden;
+}
+
 .img-fluid {
-  max-width: 100%;
-  height: auto;
-   width: 100% \9;
+//   max-width: 10em;
+//   height: 10em;
+  overflow: hidden;
+//    width: 100% \9;
 }
 
 .card {
-  max-width: 100%;
+  max-width: 15em;
   max-height: auto;
    width: 100% \9;
    background-color: #e8f6f9 ;
+   margin: 1.5%;
 }
+
 
 .flex-container {
   padding: 0;
@@ -116,6 +125,7 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  flex-wrap: wrap;
 
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
