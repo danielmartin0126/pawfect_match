@@ -7,8 +7,8 @@
   <% end %>
 <% end %>
 <%= image_tag @user.profile_pic, class: "img-fluid" %>
-<img src="<%= @user.profile_pic%>"><br>
-
+<%# <img src="<%= @user.profile_pic%>
+<br><br>
 <label>Age:</label>
 <%=@user.age%><br>
 <label>Gender:</label>
@@ -56,10 +56,22 @@
 <%= link_to "Add new post", new_post_path%>
 <% end %>
 <br>
+<div class="flex-container">
 <%@user.posts.each do |post| %>
-<%= link_to image_tag(post.image_url), post_path(post)%><br>
-<p><%= link_to post.caption, post_path(post) %> <%=post.comments.length%> comments</p>
+<div class="flex-item">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <img src=<%=post.image_url%> class="img-fluid">
+<%# <%= link_to image_tag(post.image_url), post_path(post)%><br>
+<button type="button" class="button">
+  <%= link_to post.caption, post_path(post) %> <span class="badge badge-light"><%=post.comments.length%></span>
+  <span class="sr-only">unread messages</span>
+</button>
+</div>
+</div>
+</div>
 <% end%>
+</div>
 <br>
 
 <%if current_user == @user%>
