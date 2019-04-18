@@ -9,9 +9,9 @@
 <div class="detailBox">
     <div class="titleBox">
       <label>Comments</label>
-        
+
     </div>
-  
+
     <div class="actionBox">
         <ul class="commentList">
             <%@comments.each do |comment| %>
@@ -46,4 +46,3 @@
 <% end %>
 
 <%=button_to "Back to #{@user.name}'s Profile'",user_path(@user), class: "btn btn-primary", method: :get%>
-

@@ -62,21 +62,21 @@
   font-family: 'Underdog', cursive;
   color: rgb(75, 30, 122);
   font-weight: bold;
-  font-size: 60px;
+  font-size: 4rem;
 }
 
 .text{
   font-family: 'Underdog', cursive;
   color: rgb(75, 30, 122);
   font-weight: bold;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 .text-desc{
   font-family: 'Underdog', cursive;
   color: rgb(75, 30, 122);
   font-weight: bold;
-  font-size: 25px;
+  font-size: 1.5rem;
     text-align: center;
 }
 
@@ -84,7 +84,7 @@
   font-family: 'Underdog', cursive;
   color: pink;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 2rem;
 }
 .button {
   text-align: center;
@@ -95,7 +95,7 @@
 
 .background {
   background-color:  #fdfdfd;
-  max-width: 12.5%;
+  max-width: 15rem;
   object-position: center;
 }
 
@@ -289,7 +289,17 @@
   font-size: 30px;
 }
 
+
+.text-login{
+  font-family: 'Underdog', cursive;
+  color: rgb(75, 30, 122);
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
 .bg-clear{
     border-style: outset;
 }
+
 

@@ -1,27 +1,43 @@
-<h1 class="display-1"> Pawfect Match </h1>
-
-
-<!-- <h2> Please Login </h2> -->
-
-<h4 class="error"><%= flash[:notice] %></h4>
-
-<%= form_tag(login_path) do%>
-  <%= label_tag "Username:" %>
-<%= text_field_tag :name %><br>
-
-<%= label_tag "Password:" %>
-<%= password_field_tag :password %><br>
-
-
-<div>
-  <%# <%= submit_tag 'Login' %>
-  <button type="Submit" class="btn btn-primary">Login</button>
+<div class="row">
+    <div class="col-5">
+    </div>
+    <div class="col center-text background">
+      <img src="https://i.imgur.com/2ihlBLQ.png">
+    </div>
 </div>
-  <% end %>
-  <br>
-  <br>
- 
-<div>
-  <%= button_to "Create New User", new_user_path, method: :get%>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <div class="row"
+      <h4 class="error"><%= flash[:notice] %></h4>
+      <div class="col-3">
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col">
+      <div class="text">
+      <%= form_tag(login_path) do%>
+        <%= label_tag "Username:" %>
+      <%= text_field_tag :name %><br>
+
+      <%= label_tag "Password: " %>&nbsp
+      <%= password_field_tag :password %><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+    </div>
+    <div class="col">
+    <%# <%= submit_tag 'Login' %>
+    <button type="Submit" class="btn btn-primary text-desc">Login</button> &nbsp<button type="button" class="btn btn-primary"><a href="/users/new" class="text-desc">Create New User</a></button>
+    </div>
+  </div>
+    <% end %>
+    </div>
 </div>
