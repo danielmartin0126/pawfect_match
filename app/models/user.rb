@@ -34,6 +34,7 @@ class User < ApplicationRecord
             "Male"
         end
     end
+   
 
     def messages
         Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
