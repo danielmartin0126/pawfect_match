@@ -17,13 +17,14 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.create(post_params)
-        @user = User.find(params[:post][:animal_id])
+      @post = Post.new(post_params)
+      @post.animal_id = session[:user_id]
+      @post.save
         if @post.valid?
-          redirect_to user_path(@user)
+          redirect_to user_path(session[:user_id])
         else
           flash[:errors] =@post.errors.full_messages
-          redirect_to new_supply_path
+          redirect_to new_post_path
         end
     end
 

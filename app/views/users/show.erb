@@ -6,7 +6,9 @@
     <p style="color:red;"> <%= error  %></p>
   <% end %>
 <% end %>
-<%= image_tag  @user.profile_pic, class: "img-fluid" %>
+<%= image_tag @user.profile_pic, class: "img-fluid" %>
+<img src="<%= @user.profile_pic%>"><br>
+
 <label>Age:</label>
 <%=@user.age%><br>
 <label>Gender:</label>
@@ -19,14 +21,18 @@
 <%=@user.fav_food%><br>
 <label>Interests:</label>
 <%=@user.interests%><br>
+<%if current_user == @user%>
+<%=link_to "Update #{@user.name}'s Profle", edit_user_path%><br>
+<% end %>
+
 <%if current_user != @user%>
 <%=button_to "Sniff Out", {:controller => "relationships", :action => "create", :user_id => @user.id,} , :method=>:post %>
 <%end%>
 
+<%if current_user == @user%>
 <label>Sniffing Out:</label><br>
 <%@user.partners.each do |partner|%>
-<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%>
-<%if current_user == @user%>
+<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%>-<%=link_to "Messages", messages_path%>
 <td><%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td>
 <%end%>
 <br>
@@ -39,13 +45,16 @@
 <br>
 <%=button_to "Update #{@user.name}'s Profle", edit_user_path, method: :get%><br>
 <%=button_to "Back to Users", users_path, method: :get%>
+
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
+<%if current_user == @user%>
 <%= link_to "Add new post", new_post_path%>
+<% end %>
 <br>
 <%@user.posts.each do |post| %>
 <%= link_to image_tag(post.image_url), post_path(post)%><br>

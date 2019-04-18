@@ -8,26 +8,28 @@
 <% if comment.post_id == @post.id%>
 <p><%=User.find(comment.commenter_id).name%>: </p>
 <p><%= comment.comment %></p>
- <%= button_to "Edit", edit_comment_path(:id => comment.id), :action => "edit", :method => :get %>
+<%if current_user == @user%>
+ <%# <%= button_to "Edit", edit_comment_path(:id => comment.id), :action => "edit", :method => :get %> 
 <td><%= button_to 'Delete', {:controller => "comments", :action => "destroy", :post_id => @post.id, :comment_id => comment.id} , :method=>:delete  %></td>
+<% end %>
 
 
 
 <%end%>
 <%end%>
 <br>
-
+<%if current_user != @user%>
 <%=link_to "Add comment", new_comment_path(:post => {:post_id => @post.id})%>
+<% end %>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
+<%if current_user == @user%>
 <%=link_to "Update Post", edit_post_path%><br>
 <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "Delete post?" } %><br>
+<% end %>
 
 <%=link_to "Back to #{@user.name}'s Profile'", user_path(@user)%>
-
-
-

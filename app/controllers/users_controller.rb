@@ -15,16 +15,6 @@ class UsersController < ApplicationController
         end
     end
 
-    # def search
-    #     @users = User.all
-    #     # byebug
-    #   @users = @users.select do |user|
-    #     user.species == params[:species]
-    #   end
-    #   render :index
-    # end
-
-
     def results
       @all_species = User.species_list
       @user = User.new

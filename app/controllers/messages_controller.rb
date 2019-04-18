@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
     before_action :get_message, only: [:show, :edit, :update]
 
-    def index
-        
+    def index        
         @messages = Message.where("sender_id = ? and receiver_id = ? OR sender_id = ? and receiver_id = ?" , params[:user_id], session[:user_id],session[:user_id], params[:user_id])
     #     @messages = Message.all
     #     @pets = User.all
@@ -24,7 +23,11 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @message = Message.create(message_params)
+      @message = Message.new(message_params)
+      @message.sender_id = session[:user_id]
+      @message.save
+      @message.reciever_id = params[:message][:receiver_id]
+      # byebug
         if @message.valid?
         # redirect_to messages_path(:receiver_id => params[:receiver_id], :sender_id => session[:user_id])
         redirect_to controller: 'users', action: 'show', id: params["message"][:receiver_id]

@@ -16,12 +16,12 @@ class CommentsController < ApplicationController
     end
 
     def create
-        
-        @comment = Comment.create(comment_params)
-        @user = User.find(params[:comment][:commenter_id])
-        @post = Post.find(params["comment"]["post_id"])
+      @comment = Comment.new(comment_params)
+      @comment.commenter_id = session[:user_id]
+      @comment.save
         if @comment.valid?
-          redirect_to post_path(@post)
+
+          redirect_to post_path(@comment.post_id)
         else
           flash[:errors] = @comment.errors.full_messages
           redirect_to post_path(@post)

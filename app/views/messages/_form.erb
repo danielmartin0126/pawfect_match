@@ -4,12 +4,12 @@
 <% end %>
 <% end %>
 
+
+<h1>Send a Message</h1>
 <%=form_for @message do |f|%>
 <%=f.label "Message:"%>
 <%=f.text_area :msg%><br>
-<%=f.label "From:"%>
-<%= f.collection_select(:sender_id, @users, :id, :name, prompt: true) %><br>
-<%=f.label "To :"%>
-<%= f.collection_select(:receiver_id, @users, :id, :name, prompt: true) %><br>
+<%= f.hidden_field :sender_id, value: session[:user_id] %>
+<%= f.hidden_field :receiver_id, value: params[:message][:receiver_id] %>
 <%=f.submit%>
 <% end %>
