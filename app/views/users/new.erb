@@ -1,29 +1,50 @@
-<h1>Create New Account</h1>
-
+<h1 class="text-label">Create New Account</h1>
+<br>
+<br>
 <%= render "form"%>
 
+<div class="text-login"
+  <%=form_for @user do |f|%>
+  <div class="row">
+    <div class="col">
+      <%=f.label "Name:"%><br>
+      <%=f.text_field :name%>
+      </div>
+      <div class="col">
+      <%=f.label "Password:" %><br>
+      <%=f.password_field :password %>
+    </div>
+  </div>
+  <br>
+  <br>
 
-<%=form_for @user do |f|%>
-<%=f.label "Name:"%>
-<%=f.text_field :name%><br>
-<%=f.label "Password:" %>
-<%=f.password_field :password %>
-<br>
-<br>
-<label>About You:</label><br><br>
-<%=f.label "Age:"%>
-<%=f.number_field :age%><br>
-<%=f.label "Gender:"%>
-<%= f.select :gender, ["Female", "Male"] %><br>
-<%=f.label "Species:"%>
-<%=f.text_field :species%><br>
-<%=f.label "Quote:"%>
-<%=f.text_area :quote%><br>
-<%=f.label "Interests:"%>
-<%=f.text_area :interests%><br>
-<%=f.label "Favorite Food:"%>
-<%=f.text_field :fav_food%><br>
-<%=f.label "Profile Picture:"%>
-<%=f.text_field :profile_pic%><br>
-<%=f.submit%>
-<% end %>
+  <label class="centered">About You:</label><br><br>
+
+  <div class="row">
+
+    <div class="col-3">
+    <%=f.label "Age:"%><br>
+    <%=f.number_field :age%><br><br>
+    <%=f.label "Interests:"%><br>
+    <%=f.text_field :interests%>
+    </div>
+    <div class="col-3">
+    <%=f.label "Gender:"%><br>
+    <%= f.select :gender, ["Female", "Male"] %><br><br>
+    <%=f.label "Favorite Food:"%><br>
+    <%=f.text_field :fav_food%>
+    </div>
+    <div class="col-3">
+    <%=f.label "Species:"%><br>
+    <%=f.text_field :species%><br><br>
+    <%=f.label "Profile Picture:"%><br>
+    <%=f.text_field :profile_pic%>
+    </div>
+    <div class="col-3">
+    <%=f.label "Quote:"%><br>
+    <%=f.text_field :quote%><br><br><br>
+    <%=f.submit%>
+    </div>
+  </div>
+  <% end %>
+</div>

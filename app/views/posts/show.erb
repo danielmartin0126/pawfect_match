@@ -2,16 +2,16 @@
 <div class="col center-text">
 
 <img src="<%= @post.image_url%>"><br>
-<h3><%=@post.caption%></h3>
+<h3 class="text"><%=@post.caption%></h3>
 </div>
 </div><br>
 <br>
 <div class="detailBox">
     <div class="titleBox">
       <label>Comments</label>
-        
+
     </div>
-  
+
     <div class="actionBox">
         <ul class="commentList">
             <%@comments.each do |comment| %>
@@ -46,4 +46,3 @@
 <% end %>
 
 <%=button_to "Back to #{@user.name}'s Profile'",user_path(@user), class: "btn btn-primary", method: :get%>
-
