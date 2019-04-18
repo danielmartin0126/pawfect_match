@@ -9,7 +9,5 @@
 <%=f.text_field :image_url%><br>
 <%=f.label "Caption:"%>
 <%=f.text_field :caption%><br>
-<%=f.label "User:"%>
-<%= f.collection_select(:animal_id, @users, :id, :name, prompt: true) %><br><br>
 <%=f.submit%>
 <%end%>

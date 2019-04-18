@@ -2,7 +2,16 @@ class MessagesController < ApplicationController
     before_action :get_message, only: [:show, :edit, :update]
 
     def index
-        @messages = Message.all
+      @pets = User.all
+      @messages = Message.all
+      # byebug
+      # @messages = Message.where("sender_id = ? and receiver_id = ?", session[:user_id],session[:user_id],)
+      if params[:sender_id] || params[:receiver_id]
+  @messages = @messages.select do |message|
+    message.sender_id == session[:user_id] ||  message.receiver_id == session[:user_id]
+end
+      render :index
+      end
     end
 
     def show
@@ -15,12 +24,16 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @message = Message.create(message_params)
+      @message = Message.new(message_params)
+      @message.sender_id = session[:user_id]
+      @message.save
+      @message.reciever_id = params[:message][:receiver_id]
+      # byebug
         if @message.valid?
-        redirect_to message_path(@message)
+        redirect_to user_path(@message.receiver_id)
         else
           flash[:errors] = @message.errors.full_messages
-          redirect_to new_supply_path
+          redirect_to new_message_path
         end
     end
 
