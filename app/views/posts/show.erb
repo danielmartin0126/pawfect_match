@@ -1,22 +1,35 @@
-<h1>Post Page</h1><br>
+<div class="row">
+<div class="col center-text">
+
 <img src="<%= @post.image_url%>"><br>
-<label>Caption:</label>
-<%=@post.caption%><br>
+<h3><%=@post.caption%></h3>
+</div>
+</div><br>
 <br>
-<h3>Comments</h3>
-<%@comments.each do |comment| %>
-<% if comment.post_id == @post.id%>
-<p><%=User.find(comment.commenter_id).name%>: </p>
-<p><%= comment.comment %></p>
-<%if current_user == @user%>
- <%# <%= button_to "Edit", edit_comment_path(:id => comment.id), :action => "edit", :method => :get %> 
-<td><%= button_to 'Delete', {:controller => "comments", :action => "destroy", :post_id => @post.id, :comment_id => comment.id} , :method=>:delete  %></td>
-<% end %>
+<div class="detailBox">
+    <div class="titleBox">
+      <label>Comments</label>
+        
+    </div>
+  
+    <div class="actionBox">
+        <ul class="commentList">
+            <%@comments.each do |comment| %>
+            <% if comment.post_id == @post.id%>
+            <li>
+                <div class="commenterImage">
+                  <img src="<%=User.find(comment.commenter_id).profile_pic%>" />
+                </div>
+                <div class="commentText">
+                    <p class=""><%=comment.comment%></p> <span class="date sub-text"><%=comment.created_at%></span>
+                </div>
+            </li>
+            <%end%>
+            <%end%>
+        </ul>
+    </div>
+</div>
 
-
-
-<%end%>
-<%end%>
 <br>
 <%if current_user != @user%>
 <%=link_to "Add comment", new_comment_path(:post => {:post_id => @post.id})%>
@@ -28,8 +41,9 @@
 <br>
 <br>
 <%if current_user == @user%>
-<%=link_to "Update Post", edit_post_path%><br>
-<%= link_to "Delete Post", @post, method: :delete, data: { confirm: "Delete post?" } %><br>
+<%= button_to "Update Post", edit_post_path, class: "btn btn-primary", method: :get%><br>
+<%= button_to "Delete Post", @post, class: "btn btn-danger", method: :delete, data: { confirm: "Delete post?" } %><br>
 <% end %>
 
-<%=link_to "Back to #{@user.name}'s Profile'", user_path(@user)%>
+<%=button_to "Back to #{@user.name}'s Profile'",user_path(@user), class: "btn btn-primary", method: :get%>
+

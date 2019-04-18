@@ -22,11 +22,16 @@
           <a class="nav-link" href="/users/<%= session[:user_id]%>">Profile</a>
           <%else%>
           <%end%>
-        
       </li>
       <li class="nav-item">
           <a class="nav-link" href="/users">Users</a>
         </li>
+      <li class="nav-item">
+        <%if session[:user_id]%>
+          <a class="nav-link" data-method="delete" href="/logout">Logout</a>
+          <%else%>
+          <%end%>
+      </li>
       </ul>
   </nav>
 
