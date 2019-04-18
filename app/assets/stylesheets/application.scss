@@ -14,6 +14,7 @@
  */
 @import "bootstrap";
 
+
 .message {background-color: #c0ebf7;}
 
 .list-group {
@@ -41,4 +42,84 @@
   
 #message_top {
     text-align: center;
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.all {
+  font-family: 'Underdog', cursive;
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+   margin-left: 5rem;
+   margin-right: 5rem;
+   color: red;
+}
+
+.button {
+  text-align: center;
+  color: white ;
+  font-size: 1rem;
+  background: brown;
+
+}
+
+.center-text {
+  text-align: center;
+  font-family: 'Underdog', cursive;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  color: red;
+}
+.profile {
+  text-align: right;
+  margin-right: 5rem;
+  margin-top: 5rem;
+  color: red;
+}
+
+.body{
+  background-image: url("https://www.oakville.ca/images/1140-park-albion.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+   width: 100% \9;
+}
+
+.card {
+  max-width: 100%;
+  max-height: auto;
+   width: 100% \9;
+   background-color: #e8f6f9 ;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
 }

@@ -1,6 +1,7 @@
-<h1> All Pets </h1>
-<h3>Find a Match By:</h3>
+<h1 class="center-text"> All Pets </h1>
+<h3 class="text">Find a Match By:</h3>
 
+<div class="text">
     <%=form_tag(users_path, method: :get) do %>
     <label>Species:</label>
     <%= select_tag "species", options_from_collection_for_select(@pets, "species", "species") %><br>
@@ -11,27 +12,25 @@
     <%=radio_button_tag 'gender',  'Male' %><br>
     <%=submit_tag "Search", name: nil %>
     <% end %><br> <br>
+  </div>
 
 
-
+<div>
 <%= link_to "View All", users_path %>
+</div>
 
-
-
-<%@users.each do |user| %>
-<ul>
 <%# <%= link_to image_tag(user.profile_pic), user_path(user) %>
 <%# <%= link_to user.name, user_path(user) %>
 
-
-
+<div class="flex-container">
+<%@users.each do |user| %>
+<div class="flex-item">
 <div class="card" style="width: 18rem;">
-  <!-- <img class="card-img-top" src="link_to image_tag(user.profile_pic), user_path(user) " alt="Card image cap"> -->
   <div class="card-body">
-    <!-- <h5 class="card-title"><%= link_to user.name, user_path(user) %></h5> -->
-    <p class="card-text"><%= link_to image_tag(user.profile_pic), user_path(user) %></p>
-    <a><%= link_to user.name, user_path(user) %></a>
-    </ul>
-    <% end %>
+    <img src=<%=user.profile_pic%> class="img-fluid">
+    <h5><%= link_to user.name, user_path(user) %></h5>
   </div>
+  </div>
+</div>
+    <% end %>
 </div>
