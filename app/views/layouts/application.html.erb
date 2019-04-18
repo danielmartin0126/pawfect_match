@@ -10,10 +10,14 @@
      <link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
   </head>
 
+
+
   <body class="body">
-    <h4 class="profile"><%= link_to "Profile"  %> </h4>
+    <div class="jumbotron text-center">
+    <h4 class="profile"><%= link_to "Profile", user_path(session[:user_id]  %> </h4>
     <h1 class="center-text">PAWFECT MATCH</h1>
     <div class="all"
+
     <link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
     <%= yield %>
     </div>

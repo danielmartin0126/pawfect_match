@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
       @message = Message.new(message_params)
       @message.sender_id = session[:user_id]
       @message.save
-      @message.reciever_id = params[:message][:receiver_id]
+      @message.receiver_id = params[:message][:receiver_id]
       # byebug
         if @message.valid?
         # redirect_to messages_path(:receiver_id => params[:receiver_id], :sender_id => session[:user_id])
