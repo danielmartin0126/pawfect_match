@@ -32,7 +32,7 @@
 
 <br>
 <%if current_user != @user%>
-<%=link_to "Add comment", new_comment_path(:post => {:post_id => @post.id})%>
+<%=link_to "Add comment", new_comment_path(:post => {:post_id => @post.id}), class: "btn btn-primary"%>
 <% end %>
 <br>
 <br>

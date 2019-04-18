@@ -32,7 +32,7 @@
 
 <div class="text">
 <%if current_user != @user%>
-<%= link_to "Message #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, :method => :get%>
+<%= link_to "Message #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, class: "btn btn-primary", :method => :get%>
 <%end%>
 </div>
 
@@ -45,20 +45,33 @@
 
 <%if current_user != @user%>
 <div class="text all">
-<%=button_to "Sniff Out", {:controller => "relationships", :action => "create", :user_id => @user.id,} , :method=>:post %>
+<%=button_to "Sniff Out", {:controller => "relationships", :action => "create", :user_id => @user.id,}, class: "btn btn-primary", :method=>:post %>
 <%end%>
 </div>
 
-<%if current_user == @user%>
 <div class="row all">
   <div class="col-4 text">
   <label class="text-label all">Sniffing Out:</label><br>
-  <%@user.partners.each do |partner|%>
-  <a href="/users/<%=partner.id%>" class="text-link"><img id="sniffing-out" src="<%=partner.profile_pic%>"><br>&nbsp&nbsp<%= partner.name%></a><br>&nbsp&nbsp<a class="text-desc"><%=partner.species%></a> <br>
-  <td> <%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td><br>
-  <%end%>
+  <div class="flex-container">
+      <%@user.partners.each do |partner| %>
+        <div class="card2">
+          <div class="card-body">
+            <div class='img-container text-link text-desc text'id="sniffing-out">
+            <a href="/users/<%=partner.id%>" >
+              <img src=<%=partner.profile_pic%> class="img-fluid">
+              </a>
+            </div>
+            <div class="center-text">
+            <h5 class="text-desc text"><%= link_to partner.name, user_path(partner) %></h5>
+            <%if current_user == @user%>
+            <%= button_to 'remove', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id}, class: "btn btn-danger btn-sm",:method=>:delete  %>
+            <% end %>
+            </div>
+          </div>
+    </div>
+        <% end %>
+    </div>
   <br>
-  <%end%>
   </div>
 
   <div class="col">

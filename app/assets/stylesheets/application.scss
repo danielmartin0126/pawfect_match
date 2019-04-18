@@ -60,21 +60,21 @@
 
 .text-label{
   font-family: 'Underdog', cursive;
-  color: orange;
+  color: rgb(75, 30, 122);
   font-weight: bold;
   font-size: 4rem;
 }
 
 .text{
   font-family: 'Underdog', cursive;
-  color: orange;
+  color: rgb(75, 30, 122);
   font-weight: bold;
   font-size: 2rem;
 }
 
 .text-desc{
   font-family: 'Underdog', cursive;
-  color: orange;
+  color: rgb(75, 30, 122);
   font-weight: bold;
   font-size: 1.5rem;
     text-align: center;
@@ -114,9 +114,10 @@
 }
 
 .body{
-  background-image: url("https://www.oakville.ca/images/1140-park-albion.jpg");
+  background-image: url("https://jooinn.com/images/field-163.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 
@@ -139,7 +140,12 @@
    background-color: #e8f6f9 ;
    margin: 1.5%;
 }
-
+.card2 {
+  max-width: 15em;
+  max-height: auto;
+   width: 100% \9;
+   margin: 1.5%;
+}
 
 .flex-container {
   padding: 0;
@@ -283,10 +289,17 @@
   font-size: 30px;
 }
 
+
 .text-login{
   font-family: 'Underdog', cursive;
-  color: orange;
+  color: rgb(75, 30, 122);
   font-weight: bold;
   font-size: 1.5rem;
   text-align: left;
 }
+
+.bg-clear{
+    border-style: outset;
+}
+
+
