@@ -11,6 +11,12 @@
   </head>
 
   <body>
+  <div class="jumbotron text-center">
+    <h1> Pawfect Match </h1>
+      <%= link_to "My Profile", user_path(session[:user_id])%>
+
+  </div>
+
     <link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
     <%= yield %>
   </body>

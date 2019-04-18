@@ -1,17 +1,25 @@
 
-<h1> Messages </h1>
+<h3 id="message_top" ><%=User.find(params[:user_id]).name%></h3>
+
 <% if @messages.length == 0 %>
     <p>No messages available</p>
 <%end%>
-<%# form_tag(messages_path, method: :get) do %>
-<label>Partner:</label>
- <%# select_tag “name”, options_from_collection_for_select(@pets, “name”, “name”) %><br> %> %>
+
+<%# button_to "Edit", edit_message_path(:id => message.id), :action => "edit", :method => :get, type: "button", class: "btn btn-default btn-xs" %>
+<div class="list-group">
+<div class="pre-scrollable" >
 
 <%@messages.reload.each do |message| %>
-<p><%= message.msg%></p>
-<p>From: <%=User.find(message.sender_id).name%></p>
-<p>To: <%=User.find(message.receiver_id).name%></p>
-<%= button_to "Edit", edit_message_path(:id => message.id), :action => "edit", :method => :get %>
 
-<%end%>
-<%= link_to "Reply", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get %>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active" id="message_wrapper">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><%=User.find(message.sender_id).name%></h5>
+    </div>
+    <p class="mb-1" id="message_name"><%=message.msg%></p><br>
+    <small><%=message.created_at%></small>
+  </a>
+  <%end%>
+    </div>
+  <%= link_to "New Message", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get, class: "btn btn-default", type: "button" %>
+</div>
+

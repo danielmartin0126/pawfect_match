@@ -1,5 +1,4 @@
 
-<h1><%=@user.name%>'s Profile Page</h1><br>
 
 <%if flash[:errors]%>
   <% flash[:errors].each do |error| %>
@@ -7,7 +6,7 @@
   <% end %>
 <% end %>
 <%= image_tag @user.profile_pic, class: "img-fluid" %>
-<img src="<%= @user.profile_pic%>"><br>
+<h1><%=@user.name%></h1><br>
 
 <label>Age:</label>
 <%=@user.age%><br>
@@ -32,7 +31,7 @@
 <%if current_user == @user%>
 <label>Sniffing Out:</label><br>
 <%@user.partners.each do |partner|%>
-<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%>-<%=link_to "Messages", messages_path%>
+<%=link_to partner.name, user_path(partner)%>-<%=partner.age%>-<%=partner.species%>
 <td><%= button_to 'Delete', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id} , :method=>:delete  %></td>
 <%end%>
 <br>
