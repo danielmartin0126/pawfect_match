@@ -1,4 +1,12 @@
-<h1 class="center-text"> All Pets </h1>
+
+<div class="row">
+    <div class="col-5">
+    </div>
+    <div class="col center-text background">
+      <img src="https://i.imgur.com/2ihlBLQ.png">
+    </div>
+</div>
+
 <h3 class="text">Find a Match By:</h3>
 
 <div class="text">
@@ -15,24 +23,24 @@
   </div>
 
 
-<div  class="center-text">
-<a href="/users" class="all">View All</a>
+<div class="center-text">
+<a href="/users" class="text-link all">View All</a>
 </div>
 
-<div class="flex-container">
+<div class="center-text text">
+  <div class="flex-container">
+    <%@users.each do |user| %>
 
-  <%@users.each do |user| %>
-  <%# <div class="flex-item"> %>
-    <div class="card">
-      <div class="card-body">
-        <div class='img-container'>
-        <a href="<%=user_path(user)%>" >
-          <img src=<%=user.profile_pic%> class="img-fluid">
-          </a>
+      <div class="card">
+        <div class="card-body">
+          <div class='img-container'>
+          <a href="<%=user_path(user)%>" >
+            <img src=<%=user.profile_pic%> class="img-fluid">
+            </a>
+          </div><br>
+          <h5><%= link_to user.name, user_path(user) %></h5>
         </div>
-        <h5><%= link_to user.name, user_path(user) %></h5>
+  </div>
+      <% end %>
       </div>
-
-</div>
-    <% end %>
 </div>
