@@ -1,5 +1,6 @@
 <h1 class="display-1"> Pawfect Match </h1>
 
+
 <!-- <h2> Please Login </h2> -->
 
 <h4><%= flash[:notice] %></h4>
@@ -11,6 +12,7 @@
 <%= label_tag "Password:" %>
 <%= password_field_tag :password %><br>
 
+
 <div>
   <%# <%= submit_tag 'Login' %>
   <button type="Submit" class="btn btn-primary">Login</button>
@@ -18,4 +20,5 @@
   <% end %>
 <div>
   <%= button_to "Create New User", new_user_path, method: :get%>
+
 </div>

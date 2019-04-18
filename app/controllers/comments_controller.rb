@@ -20,8 +20,13 @@ class CommentsController < ApplicationController
       @comment.commenter_id = session[:user_id]
       @comment.save
         if @comment.valid?
+
           redirect_to post_path(@comment.post_id)
-        end
+        else
+          flash[:errors] = @comment.errors.full_messages
+          redirect_to post_path(@post)
+
+        end 
     end
 
     def edit

@@ -4,6 +4,5 @@ class Message < ApplicationRecord
 
     validates :msg, presence: true
     validates :receiver_id, presence: true
-
-
+    
 end

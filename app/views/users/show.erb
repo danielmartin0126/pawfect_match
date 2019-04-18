@@ -8,6 +8,7 @@
 <% end %>
 <%= image_tag @user.profile_pic, class: "img-fluid" %>
 <img src="<%= @user.profile_pic%>"><br>
+
 <label>Age:</label>
 <%=@user.age%><br>
 <label>Gender:</label>
@@ -36,8 +37,15 @@
 <%end%>
 <br>
 <%end%>
-<%=link_to "Send #{@user.name} a message", new_message_path%><br>
-<%=link_to "Back to Users", users_path%>
+<%if current_user != @user%>
+<%= link_to "Message #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, :method => :get%>
+<%end%>
+
+
+<br>
+<%=button_to "Update #{@user.name}'s Profle", edit_user_path, method: :get%><br>
+<%=button_to "Back to Users", users_path, method: :get%>
+
 <br>
 <br>
 <br>

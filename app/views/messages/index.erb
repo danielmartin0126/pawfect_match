@@ -1,13 +1,17 @@
-<h1> All Messages </h1>
-<%# <%if current_user == @user %> %>
-<%=form_tag(messages_path, method: :get) do %>
+
+<h1> Messages </h1>
+<% if @messages.length == 0 %>
+    <p>No messages available</p>
+<%end%>
+<%# form_tag(messages_path, method: :get) do %>
 <label>Partner:</label>
-<%= select_tag "name", options_from_collection_for_select(@pets, "name", "name") %><br>
-<%=submit_tag "Search", name: nil %>
-<% end %>
-<%@messages.each do |message| %>
+ <%# select_tag “name”, options_from_collection_for_select(@pets, “name”, “name”) %><br> %> %>
+
+<%@messages.reload.each do |message| %>
 <p><%= message.msg%></p>
 <p>From: <%=User.find(message.sender_id).name%></p>
 <p>To: <%=User.find(message.receiver_id).name%></p>
 <%= button_to "Edit", edit_message_path(:id => message.id), :action => "edit", :method => :get %>
-<% end %>
+
+<%end%>
+<%= link_to "Reply", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get %>

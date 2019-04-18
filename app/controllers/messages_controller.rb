@@ -1,17 +1,16 @@
 class MessagesController < ApplicationController
     before_action :get_message, only: [:show, :edit, :update]
 
-    def index
-      @pets = User.all
-      @messages = Message.all
-      # byebug
-      # @messages = Message.where("sender_id = ? and receiver_id = ?", session[:user_id],session[:user_id],)
-      if params[:sender_id] || params[:receiver_id]
-  @messages = @messages.select do |message|
-    message.sender_id == session[:user_id] ||  message.receiver_id == session[:user_id]
-end
-      render :index
-      end
+    def index        
+        @messages = Message.where("sender_id = ? and receiver_id = ? OR sender_id = ? and receiver_id = ?" , params[:user_id], session[:user_id],session[:user_id], params[:user_id])
+    #     @messages = Message.all
+    #     @pets = User.all
+    #    if params[:sender_id] || params[:receiver_id]
+    #      @messages = @messages.select do |message|
+    #        message.sender_id == session[:user_id] ||  message.receiver_id == session[:user_id]
+    #      end
+    #     render :index
+    #    end
     end
 
     def show
@@ -30,10 +29,12 @@ end
       @message.reciever_id = params[:message][:receiver_id]
       # byebug
         if @message.valid?
-        redirect_to user_path(@message.receiver_id)
+        # redirect_to messages_path(:receiver_id => params[:receiver_id], :sender_id => session[:user_id])
+        redirect_to controller: 'users', action: 'show', id: params["message"][:receiver_id]
+
         else
           flash[:errors] = @message.errors.full_messages
-          redirect_to new_message_path
+                redirect_to controller: 'users', action: 'show', id: params["message"][:receiver_id]
         end
     end
 

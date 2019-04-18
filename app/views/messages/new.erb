@@ -1,2 +1,8 @@
 <h1>Send a Message</h1>
-<%= render 'form'%>
+<%=form_for @message do |f|%>
+<%=f.label "Message:"%>
+<%=f.text_area :msg%><br>
+<%= f.hidden_field :sender_id, value: session[:user_id] %>
+<%= f.hidden_field :receiver_id, value: params[:receiver_id] %>
+<%=f.submit%>
+<% end %>
