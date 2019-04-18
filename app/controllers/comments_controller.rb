@@ -24,7 +24,9 @@ class CommentsController < ApplicationController
           redirect_to post_path(@post)
         else
           flash[:errors] = @comment.errors.full_messages
-          redirect_to new_supply_path
+          redirect_to post_path(@post)
+
+        end 
     end
 
     def edit

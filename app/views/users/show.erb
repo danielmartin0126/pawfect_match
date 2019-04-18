@@ -6,7 +6,7 @@
     <p style="color:red;"> <%= error  %></p>
   <% end %>
 <% end %>
-<img src="<%= @user.profile_pic%>"><br>
+<%= image_tag  @user.profile_pic, class: "img-fluid" %>
 <label>Age:</label>
 <%=@user.age%><br>
 <label>Gender:</label>
@@ -31,11 +31,11 @@
 <%end%>
 <br>
 <%end%>
-<%if current_user == @user%>
-<%= button_to "View Messages", messages_path, method: :get %>
-
+<%if current_user != @user%>
+<%= link_to "Message #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, :method => :get%>
 <%end%>
-<%=link_to "Send #{@user.name} a message", {:controller => "messages", :action => "new", :receiver_id => @user.id}, :method => :get%>
+
+
 <br>
 <%=button_to "Update #{@user.name}'s Profle", edit_user_path, method: :get%><br>
 <%=button_to "Back to Users", users_path, method: :get%>
