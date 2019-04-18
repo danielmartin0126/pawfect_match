@@ -54,7 +54,7 @@
 
 
 <br>
-<%=button_to "Update #{@user.name}'s Profle", edit_user_path, method: :get%><br>
+<%=button_to "Update #{@user.name}'s Profile", edit_user_path, method: :get%><br>
 <%=button_to "Back to Users", users_path, method: :get%>
 
 <br>
@@ -63,26 +63,32 @@
 <br>
 <br>
 <br>
-<%if current_user == @user%>
-<%= link_to "Add new post", new_post_path%>
-<% end %>
+<% if current_user == @user %>
+<%= button_to "Add new post", new_post_path, method: :get%>
+ <%end %>
+<br>
+
 <br>
 <div class="flex-container">
-<%@user.posts.each do |post| %>
-<div class="flex-item">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <a href="/posts/<%=post.id%>"><img src=<%=post.image_url%> class="img-fluid"></a>
-<button type="button" class="button">
-  <%= link_to post.caption, post_path(post) %> <span class="badge badge-light"><%=post.comments.length%></span>
-  <span class="sr-only">unread messages</span>
-</button>
+
+  <%@user.posts.each do |post| %>
+    <div class="card">
+      <div class="card-body">
+        <div class='img-container'>
+        <a href="<%=post_path(post)%>" >
+          <img src=<%=post.image_url%> class="img-fluid">
+          </a>
+        </div>
+        <h5><%= link_to post.caption, post_path(post) %></h5>
+      </div>
+
 </div>
+    <% end %>
 </div>
-</div>
-<% end%>
-</div>
-<br>
+
+
+
+
 
 <%if current_user == @user%>
 <%= button_to "Logout", logout_path, method: :delete %>

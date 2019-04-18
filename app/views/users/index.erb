@@ -20,14 +20,19 @@
 </div>
 
 <div class="flex-container">
-<%@users.each do |user| %>
-<div class="flex-item">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <a href="/users/<%=user.id%>">  <img src=<%=user.profile_pic%> class="img-fluid"></a>
-    <h5><%= link_to user.name, user_path(user) %></h5>
-  </div>
-  </div>
+
+  <%@users.each do |user| %>
+  <%# <div class="flex-item"> %>
+    <div class="card">
+      <div class="card-body">
+        <div class='img-container'>
+        <a href="<%=user_path(user)%>" >
+          <img src=<%=user.profile_pic%> class="img-fluid">
+          </a>
+        </div>
+        <h5><%= link_to user.name, user_path(user) %></h5>
+      </div>
+
 </div>
     <% end %>
 </div>
