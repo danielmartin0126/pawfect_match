@@ -1,8 +1,10 @@
+<div class="error">
 <% if flash[:errors] %>
 <% flash[:errors].each do |error| %>
 <%= error %><br>
 <% end %>
 <% end %>
+</div>
 
 <%=form_for @post do |f|%>
 <%=f.label "Picture URL:"%>
