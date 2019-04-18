@@ -1,8 +1,8 @@
 
-<h3 id="message_top" ><%=User.find(params[:user_id]).name%></h3>
+<h3 class="text-label" id="message_top" >Messages With <%=User.find(params[:user_id]).name%></h3>
 
 <% if @messages.length == 0 %>
-    <p>No messages available</p>
+    <p class="text">No messages available</p>
 <%end%>
 
 <%# button_to "Edit", edit_message_path(:id => message.id), :action => "edit", :method => :get, type: "button", class: "btn btn-default btn-xs" %>
@@ -22,4 +22,3 @@
     </div>
   <%= link_to "New Message", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get, class: "btn btn-default", type: "button" %>
 </div>
-
