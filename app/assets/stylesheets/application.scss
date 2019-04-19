@@ -24,6 +24,12 @@
   padding: 10px;
 }
 
+a {
+    color: rgb(169, 41, 185);
+    text-decoration: none;
+    background-color: transparent;
+}
+
 #message_name  {
     font-size: 2.25em;
 }
@@ -83,15 +89,23 @@
 
 .text-link{
   font-family: 'Underdog', cursive;
-  color: pink;
+  color: rgb(169, 41, 185);
   font-weight: bold;
   font-size: 2rem;
+  text-decoration: underline;
+
+  .name-text{
+    font-family: 'Underdog', cursive;
+    color: rgb(169, 41, 185);
+    font-weight: bold;
+  }
 }
 .button {
   text-align: center;
   color: white ;
   font-size: 1rem;
   background: brown;
+
 }
 
 .background {
