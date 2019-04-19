@@ -1,5 +1,5 @@
 
-<h3 class="text-label" id="message_top" >Messages With <%=User.find(params[:user_id]).name%></h3>
+<h3 class="text-label" id="message_top" >Woofs With <%=User.find(params[:user_id]).name%></h3>
 <div class="row">
 <div class='col-3'>
 </div>
@@ -8,17 +8,17 @@
 
 <div class="detailBox">
     <div class="titleBox">
-      <label>Messages</label>
-        
+      <label>Woofs</label>
+
     </div>
-  
+
     <div class="actionBox">
         <ul class="commentList">
           <li>
             <% if @messages.length == 0 %>
-            
+
               <div class="commentText">
-                <p class="">No messages available</p> 
+                <p class="">No Woofs Available</p>
               </div>
                <%end%>
             </li>
@@ -34,11 +34,11 @@
             <%end%>
         </ul>
         <div class="profile">
-      <%= link_to "New Message", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get, type: "button", class: "btn btn-default"%>
+
+      <%= link_to "New Woof", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get, class: "btn btn-default", type: "button" %>
 
       </div>
     </div>
 </div>
 </div>
 </div>
-

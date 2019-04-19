@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<h3 class="text">Find a Match By:</h3>
+<h3 class="text">Find Somepawdy:</h3>
 
 <div class="text">
     <%=form_tag(users_path, method: :get) do %>
@@ -16,14 +16,14 @@
   options_for_select(User.pluck(:species).uniq),
   { include_blank: 'Species' }%>
     <%= select_tag :gender, options_for_select([['Male'], ['Female']]),:required => true ,:include_blank => "Gender" %>
-    <%=submit_tag "Search", class: "btn btn-primary", name: nil %>
+    <%=submit_tag "Sniff Out", class: "btn btn-primary", name: nil %>
 
     <% end %><br> <br>
   </div>
 
 <br><br><br>
 <div class="center-text">
-<a href="/users" class="text-link all">View All</a>
+<a href="/users" class="text-link all">View All Pet-tentials</a>
 </div>
 
 
