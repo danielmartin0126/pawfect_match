@@ -4,5 +4,5 @@
   <%= f.collection_select(:user_id, @users, :id, :name, prompt: true) %><br><br>
 <%=f.label "Animal 2"%>
 <%= f.collection_select(:so_user_id, @users, :id, :name, prompt: true) %><br><br>
-<%=f.submit%>
+<%=f.submit class: "btn btn-primary"%>
 <%end%>
