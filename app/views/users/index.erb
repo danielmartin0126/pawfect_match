@@ -37,7 +37,7 @@
             <img src=<%=user.profile_pic%> class="img-fluid">
             </a>
           </div><br>
-          <h5><%= link_to user.name, user_path(user) %></h5>
+          <h5 class="name-text"><%= link_to user.name, user_path(user), class:"name-text" %></h5>
         </div>
   </div>
       <% end %>
