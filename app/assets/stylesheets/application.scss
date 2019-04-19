@@ -12,6 +12,7 @@
  *
 *= require_self
  */
+
 @import "bootstrap";
 
 
@@ -94,7 +95,7 @@
 }
 
 .background {
-  background-color:  #fdfdfd;
+
   max-width: 15rem;
   object-position: center;
 }
@@ -161,18 +162,18 @@
 
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
-  border: solid;
-  border-color: yellow;
+  // border: solid;
+  // border-color: yellow;
 }
 .row{
   align-content: flex-start;
-  border: solid;
-  border-color: red;
+  // border: solid;
+  // border-color: red;
 }
 
 .col {
-  border: solid;
-  border-color: green;
+  // border: solid;
+  // border-color: green;
 }
 
 .flex-item {
@@ -186,8 +187,8 @@
   font-size: 3em;
   text-align: center;
   object-fit: scale-down;
-  border: solid;
-  border-color: red;
+  // border: solid;
+  // border-color: red;
 }
 
 .logo {
@@ -301,5 +302,3 @@
 .bg-clear{
     border-style: outset;
 }
-
-
