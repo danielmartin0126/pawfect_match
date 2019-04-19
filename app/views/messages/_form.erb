@@ -13,5 +13,5 @@
 <%=f.text_area :msg%><br>
 <%= f.hidden_field :sender_id, value: session[:user_id] %>
 <%= f.hidden_field :receiver_id, value: params[:message][:receiver_id] %>
-<%=f.submit%>
+<%=f.submit class: "btn btn-primary"%>
 <% end %>

@@ -11,14 +11,13 @@
 
 <div class="text">
     <%=form_tag(users_path, method: :get) do %>
-    <label>Species:</label>
-    <%= select_tag "species", options_from_collection_for_select(@pets, "species", "species") %><br>
-    <%# <%= label_tag "Gender:" %>
-    <%= label_tag "Female:" %>
-    <%=radio_button_tag 'gender', 'Female' %>
-    <%= label_tag "Male:" %>
-    <%=radio_button_tag 'gender',  'Male' %><br>
-    <%=submit_tag "Search", name: nil %>
+
+    <%= select_tag :species,
+  options_for_select(User.pluck(:species).uniq),
+  { include_blank: 'Species' }%>
+    <%= select_tag :gender, options_for_select([['Male'], ['Female']]),:required => true ,:include_blank => "Gender" %>
+    <%=submit_tag "Search", class: "btn btn-primary", name: nil %>
+
     <% end %><br> <br>
   </div>
 
