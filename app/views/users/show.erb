@@ -21,7 +21,7 @@
     <%=@user.species%><br>
     <label>Quote:</label>
     <%=@user.quote%><br>
-    <label>Favorite Food:</label>
+    <label>Favorite Treat:</label>
     <%=@user.fav_food%><br>
     <label>Interests:</label>
     <%=@user.interests%><br>
@@ -51,7 +51,15 @@
 
 <div class="row all">
   <div class="col-4 text">
-  <label class="text-label all">Sniffing Out:</label><br>
+    <div class="border-line">
+      <div class="col">
+    <div class="row text-label center-text"
+      <div class="col">
+      </div>
+      <div class="col center-text">
+  <label class="text-label"><%="Sniffing Out:"%></label><br>
+      </div>
+    </div>
   <div class="flex-container">
       <%@user.partners.each do |partner| %>
         <div class="card2">
@@ -64,31 +72,34 @@
             <div class="center-text">
             <h5 class="text-desc text"><%= link_to partner.name, user_path(partner) %></h5>
             <%if current_user == @user%>
-            <%= button_to 'remove', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id}, class: "btn btn-danger btn-sm",:method=>:delete  %>
+            <%= button_to 'X', {:controller => "relationships", :action => "destroy", :so_user_id => partner.id}, class: "btn btn-danger btn-sm",:method=>:delete  %>
             <% end %>
             </div>
           </div>
     </div>
         <% end %>
     </div>
-  <br>
+
+  </div>
   </div>
 
-  <div class="col">
+  <div class="col border-line">
       <div class="row">
             <% if current_user == @user %>
-              <div class="col-3">
-                <br><%= button_to "Add new post", new_post_path, class: "btn btn-primary", method: :get%>
+              <div class="col-2">
               </div>
-              <div class="col">
-                <h1 class="text-label"><%=@user.name%>'s Post's</h1>
+              <div class="col center-text">
+                <h1 class="text-label"><%=@user.name%>'s Scratching Posts</h1>
+              </div>
+              <div class="col-2">
+                <br><%= button_to "Add new post", new_post_path, class: "btn btn-primary", method: :get%>
               </div>
              <%end %><br>
              <% if current_user != @user %>
                 <div class="col-3">
                 </div>
                 <div  class="text-label center-text col-6"
-                <h1><%=@user.name%>'s Scratching Post's</h1>
+                <h1><%=@user.name%>'s Scratching Posts</h1>
                 </div>
              <% end %>
        </div>
