@@ -34,7 +34,8 @@
             <%end%>
         </ul>
         <div class="profile">
-      <%= link_to "New Message", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get, class: "btn btn-default", type: "button" %>
+      <%= link_to "New Message", new_message_path(:receiver_id => params[:user_id], :sender_id => session[:user_id]), :action => "new", :method => :get, type: "button", class: "btn btn-default"%>
+
       </div>
     </div>
 </div>
