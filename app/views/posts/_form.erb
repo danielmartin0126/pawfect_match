@@ -6,10 +6,37 @@
 <% end %>
 </div>
 
-<%=form_for @post do |f|%>
-<%=f.label "Picture URL:"%>
-<%=f.text_field :image_url%><br>
-<%=f.label "Caption:"%>
-<%=f.text_field :caption%><br>
-<%=f.submit class: "btn btn-primary"%>
-<%end%>
+
+
+<div class="center-text text">
+    <%=form_for @post do |f|%>
+    <div class="row">
+      <div class="col center-text">
+        <label>Picture URL:</label>
+        <%=f.text_field :image_url%><br>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col">
+      <label></label>  <label></label>
+      <label></label>
+      <label></label>
+      <label></label>
+    <%=f.label "Caption :"%>
+    <%=f.text_field :caption%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label></label>
+      <label></label>
+      <label></label>
+      <label></label>
+      <label></label>
+      <label></label>
+    <%=f.submit class: "btn btn-primary"%>
+    </div>
+    </div>
+    <%end%>
+</div>
+
