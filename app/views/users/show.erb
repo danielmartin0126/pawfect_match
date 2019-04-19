@@ -32,20 +32,20 @@
 
 <div class="text">
 <%if current_user != @user%>
-<%= link_to "Message #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, class: "btn btn-primary", :method => :get%>
+<%= link_to "Woof at #{@user.name}", {:controller => "messages", :action => "index", :user_id => @user.id}, class: "btn btn-primary", :method => :get%>
 <%end%>
 </div>
 
 <%if current_user == @user%>
 <div>
-<a class="btn btn-primary" href="/users/<%=session[:user_id]%>/edit">Update <%= @user.name%>'s Profile</a><br>
+<a class="btn btn-primary" href="/users/<%=session[:user_id]%>/edit">Update <%= @user.name%>'s Purr-file</a><br>
 <% end %>
 </div>
 
 
 <%if current_user != @user%>
 <div class="text all">
-<%=button_to "Sniff Out", {:controller => "relationships", :action => "create", :user_id => @user.id,}, class: "btn btn-primary", :method=>:post %>
+<%=button_to "Ask On A Walk", {:controller => "relationships", :action => "create", :user_id => @user.id,}, class: "btn btn-primary", :method=>:post %>
 <%end%>
 </div>
 
@@ -57,7 +57,7 @@
       <div class="col">
       </div>
       <div class="col center-text">
-  <label class="text-label"><%="Sniffing Out:"%></label><br>
+  <label class="text-label"><%="Walking With:"%></label><br>
       </div>
     </div>
   <div class="flex-container">
@@ -92,7 +92,7 @@
                 <h1 class="text-label"><%=@user.name%>'s Scratching Posts</h1>
               </div>
               <div class="col-2">
-                <br><%= button_to "Add new post", new_post_path, class: "btn btn-primary", method: :get%>
+                <br><%= button_to "Add New Post", new_post_path, class: "btn btn-primary", method: :get%>
               </div>
              <%end %><br>
              <% if current_user != @user %>
@@ -133,6 +133,6 @@
 
 <div class="all">
 <%if current_user == @user%>
-<%= button_to "Delete Account", user_path(@user), class: "btn btn-danger",method: :delete, data: {confirm: "Do you wish to delete your account?"} %>
+<%= button_to "Delete Purr-file", user_path(@user), class: "btn btn-danger",method: :delete, data: {confirm: "Do you wish to delete your account?"} %>
 <%end%>
 </div>

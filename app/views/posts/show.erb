@@ -28,22 +28,24 @@
             <%end%>
         </ul>
         <div class="profile">
-          <%if current_user != @user%>
-          <%=link_to "Add comment", new_comment_path(:post => {:post_id => @post.id}), class: "btn btn-primary"%>
+          <%if current_user == @user%>
+          <%=link_to "Add Comment", new_comment_path(:post => {:post_id => @post.id}), class: "btn btn-primary"%>
           <% end %>
           </div>
     </div>
-</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<%=button_to "Back to #{@user.name}'s Purr-file'",user_path(@user), class: "btn btn-primary", method: :get%>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%if current_user == @user%>
-<%= button_to "Update Post", edit_post_path, class: "btn btn-primary", method: :get%><br>
+<div class="col profile">
+  <%if current_user == @user%>
+  <%= button_to "Update Post", edit_post_path, class: "btn btn-primary", method: :get%>
+  <% end %>
 <%= button_to "Delete Post", @post, class: "btn btn-danger", method: :delete, data: { confirm: "Delete post?" } %><br>
-<% end %>
-
-<%=button_to "Back to #{@user.name}'s Profile'",user_path(@user), class: "btn btn-primary", method: :get%>
